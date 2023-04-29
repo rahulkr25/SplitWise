@@ -15,6 +15,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        android:text="Add"/>
+        android:text="Add Expense"/>
+    <Button
+        android:id="@+id/show_detail_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="false"
+        android:layout_margin="16dp"
+        android:text="BalanceSheet"/>
 
 </RelativeLayout>

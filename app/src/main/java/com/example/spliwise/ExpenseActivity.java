@@ -1,25 +1,19 @@
 package com.example.spliwise;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseActivity extends AppCompatActivity {
-
-    private EditText amountEditText;
-    private EditText descriptionEditText;
-    private Button addButton;
     private String payer;
     private List<String>distributor;
-
     String[] users = {"User1", "User2", "User3", "User4"};
 
     @Override
@@ -27,10 +21,14 @@ public class ExpenseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
         distributor=new ArrayList<>();
+
         // Initialize UI elements
-        amountEditText = findViewById(R.id.editTextAmount);
-        descriptionEditText = findViewById(R.id.editTextDescription);
-        addButton = findViewById(R.id.buttonAddExpense);
+        EditText amountEditText = findViewById(R.id.editTextAmount);
+        EditText descriptionEditText = findViewById(R.id.editTextDescription);
+        Button addButton = findViewById(R.id.buttonAddExpense);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button selectPayerButton = findViewById(R.id.selectpayerbutton);
         selectPayerButton.setOnClickListener(v -> {
@@ -106,5 +104,14 @@ public class ExpenseActivity extends AppCompatActivity {
             // Close activity
             finish();
         });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
